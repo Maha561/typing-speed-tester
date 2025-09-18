@@ -29,6 +29,66 @@ let backspaceCount;  // to track backspaces
 
 StartButton.addEventListener("click",() =>{
 
+    const randomIndex = Math.floor(Math.random()*sentences.length);
+    const randomSentence = sentences[randomIndex];
+    /*
+
+    1. sentences.length
+
+This gives the total number of sentences in the array.
+
+In your case, sentences.length = 7.
+
+2. Math.random()
+
+Generates a random number between 0 (inclusive) and 1 (exclusive).
+Example: 0.2345, 0.6789, etc.
+
+3. Math.random() * sentences.length
+
+Multiplies that random number by the length of the array (7).
+
+Now the result is a number between 0 and 7 (not including 7).
+Example: 3.45, 5.89, etc.
+
+4. Math.floor(...)
+
+Math.floor() removes the decimal part (rounds down).
+
+So 3.45 → 3, 5.89 → 5.
+
+This ensures we get a valid array index (0–6 for 7 sentences).
+
+5. const randomSentence = sentences[randomIndex];
+
+Finally, this picks a sentence from the array using that random index.
+
+Example: If randomIndex = 2, then randomSentence = "Practice makes perfect when it comes to typing."
+
+    */
+
+   // Show the sentence
+    sentenceDisplay.textContent = randomSentence;
+
+     typingArea.disabled = false;
+     typingArea.value="";
+     typingArea.focus();
+
+     //.focus() automatically places the cursor inside the textarea.
+
+      // Reset results
+    wpmDisplay.textContent = "word per time :";
+    accuracyDisplay.textContent = "accuracy :";
+    backspaceDisplay.textContent = "backspace :";
+
+     // Start the timer
+    startTime = new Date().getTime();
+
+    // Reset backspace count
+    backspaceCount = 0;
+
+
+
     
 
 });
